@@ -51,7 +51,34 @@ public class cardHolder
     {
         void printOptions()
         {
-            Console.WriteLine("");
+            Console.WriteLine("Please one of the following options ... ");
+            Console.WriteLine("1.Deposit option");
+            Console.WriteLine("2. Withdraw");
+            Console.WriteLine("3. Show Balance");
+            Console.WriteLine("4. Exit");
+        }
+        void deposit(cardHolder currentUser)
+        {
+            Console.WriteLine("How much tk do you want to deposit");
+            double deposit = Double.Parse(Console.ReadLine());
+            currentUser.setBalance(deposit+currentUser.getBalance());
+            Console.WriteLine("Thank you for your money! Your current balance is tk "+currentUser.getBalance());
+
+        }
+        void widraw(cardHolder currentUser)
+        {
+            Console.WriteLine("How much tk do you want to withdraw");
+            double withdraw=Double.Parse(Console.ReadLine());
+            if(currentUser.getBalance()<=withdraw)
+            {
+                currentUser.setBalance(currentUser.getBalance() - withdraw);
+                Console.WriteLine("Your Balance withdraw is Successfull!");
+            }
+            else
+            {
+                Console.WriteLine("Your Balance withdrawal is Failed");
+            }
+
         }
     }
     
