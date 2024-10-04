@@ -80,6 +80,75 @@ public class cardHolder
             }
 
         }
+        void printBalance(cardHolder currentUser)
+        {
+            Console.WriteLine("Your Balance is "+currentUser.getBalance());
+        }
+
+        List<cardHolder> listOfCardholders=new List<cardHolder>();
+        listOfCardholders.Add(new cardHolder("123456", "Naimur", "Rahman", 1000, 123));
+        listOfCardholders.Add(new cardHolder("123457", "Zawadul", "Karim", 1000, 124));
+        listOfCardholders.Add(new cardHolder("123458", "Naim", "Arafat", 1000, 125));
+        listOfCardholders.Add(new cardHolder("123459", "Arnob", "Sen", 1000, 126));
+
+        Console.WriteLine("This is a simple ATM");
+
+        Console.WriteLine("Please Enter your Debit Card");
+
+        String debitCardNumber = "";
+        cardHolder currentUser;
+
+        while (true)
+        {
+            try
+            {
+                debitCardNumber=Console.ReadLine();
+
+                // Check the Card Aganist Our DB;
+
+                currentUser= listOfCardholders.FirstOrDefault(a=>a.cardNumber==debitCardNumber);
+
+                if (currentUser != null)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("The are no card of this card number. Please try again");
+                }
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+
+            
+
+           
+        }
+        Console.WriteLine("Please Enter your pin: ");
+        int userPin = 0;
+        int currentPin;
+        while (true)
+        {
+            try
+            {
+                currentPin = int.Parse(Console.ReadLine());
+
+                // Check the Pin Aganist Our DB;
+                
+
+                if (currentPin == currentUser.getPin())
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Your pin is invalid ! Please try again");
+                }
+            }
+            catch { Console.WriteLine("Here are an error"); }
+        }
+
+
+
     }
     
 }
