@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 public class cardHolder
 {
     private String cardNumber;
@@ -146,6 +147,46 @@ public class cardHolder
             }
             catch { Console.WriteLine("Here are an error"); }
         }
+
+        Console.WriteLine("Welcome "+currentUser.getFirstName());
+
+        int option = 0;
+        do
+        {
+            printOptions();
+            try
+            {
+                option= int.Parse(Console.ReadLine());
+            }
+            catch {}
+
+             if(option == 1)
+            {
+                deposit(currentUser);
+            }
+            else if (option == 2)
+            {
+                widraw(currentUser);
+            }
+            else if (option==3)
+            {
+                printBalance(currentUser);
+            }
+             else if(option == 4)
+            {
+                break;
+            }
+             else
+            {
+                Console.WriteLine("Enter a valid option");
+            }
+
+        }
+        while (option!=4);
+
+        
+
+        Console.WriteLine("Thanks You! Have a nice day");
 
 
 
